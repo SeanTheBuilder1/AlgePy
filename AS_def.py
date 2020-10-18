@@ -1,18 +1,29 @@
-
-A1, n, An, d = symbols("A1 n An d")
+from sympy import symbols, solveset
+An, A1, n, d = symbols("An A1 n d")
 def calcDefAn():
 	while True:
 		try:
 			a1In = input("A1 = ")
-			nIn = input("n = ")
+			nIn = int(input("n = "))
 			dIn = input("d = ")
 			expr = A1 + (n - 1) * d - An
 			expr = expr.subs(A1, a1In)
 			expr = expr.subs(n, nIn)
 			expr = expr.subs(d, dIn)
+			value = []
+			for i in range(nIn):
+				sol = A1 + (n) * d - An
+				sol = sol.subs(A1, a1In)
+				sol = sol.subs(d, dIn)
+				sol = sol.subs(n, i)
+				sol = solveset(sol, An)
+				value.append(str(sol))
+			print("\nResults:")
+			for i in range(len(value)):
+				print(i + 1, " | ", value[i])
 			expr = solveset(expr, An)
 			print("An = ", a1In, " + (", nIn, " - 1) * ", dIn, sep='')
-			print(str(expr))
+			print("An =", str(expr))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):
@@ -31,8 +42,9 @@ def calcDefA1():
 			expr = expr.subs(n, nIn)
 			expr = expr.subs(d, dIn)
 			expr = solveset(expr, A1)
+			print("\nResults:")
 			print("A1 = ", anIn, " - (", nIn, " - 1) * ", dIn, sep='')
-			print(str(expr))
+			print("A1 =", str(expr))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):
@@ -52,8 +64,9 @@ def calcDefn():
 			expr = expr.subs(A1, a1In)
 			expr = expr.subs(d, dIn)
 			expr = solveset(expr, n)
+			print("\nResults:")
 			print("n = ((", anIn, " - ", a1In, ") / ", dIn, ") + 1", sep='')
-			print(str(expr))
+			print("n =", str(expr))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):
@@ -73,8 +86,9 @@ def calcDefd():
 			expr = expr.subs(A1, a1In)
 			expr = expr.subs(n, nIn)
 			expr = solveset(expr, d)
+			print("\nResults:")
 			print("d = (", anIn, " - ", a1In, ") / (", nIn, " - 1)", sep='')
-			print(str(expr))
+			print("d =", str(expr))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):
