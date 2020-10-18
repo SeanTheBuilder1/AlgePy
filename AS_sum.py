@@ -18,7 +18,7 @@ def calcSumAn():
 			"Press any key to continue.\n"))
 			if(closer == '1'):
 				return
-		except ZeroDivisionError:
+		except:
 			print("Invalid Character")
 			
 def calcSumSn():

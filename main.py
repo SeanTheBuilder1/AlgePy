@@ -40,5 +40,5 @@ while True:
 				raise(ValueError)
 		else:
 			raise(ValueError)
-	except ZeroDivisionError:
+	except:
 		print("Invalid Character")
