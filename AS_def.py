@@ -1,4 +1,4 @@
-from sympy import symbols, solveset
+from sympy import symbols, solveset, solve
 An, A1, n, d = symbols("An A1 n d")
 def calcDefAn():
 	while True:
@@ -16,14 +16,14 @@ def calcDefAn():
 				sol = sol.subs(A1, a1In)
 				sol = sol.subs(d, dIn)
 				sol = sol.subs(n, i)
-				sol = solveset(sol, An)
-				value.append(str(sol))
+				sol = solve(sol, An)
+				value.append(str(sol[0]))
 			print("\nResults:")
 			for i in range(len(value)):
 				print(i + 1, " | ", value[i])
-			expr = solveset(expr, An)
+			expr = solve(expr, An)
 			print("An = ", a1In, " + (", nIn, " - 1) * ", dIn, sep='')
-			print("An =", str(expr))
+			print("An =", str(expr[0]))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):
@@ -41,10 +41,10 @@ def calcDefA1():
 			expr = expr.subs(An, anIn)
 			expr = expr.subs(n, nIn)
 			expr = expr.subs(d, dIn)
-			expr = solveset(expr, A1)
+			expr = solve(expr, A1)
 			print("\nResults:")
 			print("A1 = ", anIn, " - (", nIn, " - 1) * ", dIn, sep='')
-			print("A1 =", str(expr))
+			print("A1 =", str(expr[0]))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):
@@ -63,10 +63,10 @@ def calcDefn():
 			expr = expr.subs(An, anIn)
 			expr = expr.subs(A1, a1In)
 			expr = expr.subs(d, dIn)
-			expr = solveset(expr, n)
+			expr = solve(expr, n)
 			print("\nResults:")
 			print("n = ((", anIn, " - ", a1In, ") / ", dIn, ") + 1", sep='')
-			print("n =", str(expr))
+			print("n =", str(expr[0]))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):
@@ -85,10 +85,10 @@ def calcDefd():
 			expr = expr.subs(An, anIn)
 			expr = expr.subs(A1, a1In)
 			expr = expr.subs(n, nIn)
-			expr = solveset(expr, d)
+			expr = solve(expr, d)
 			print("\nResults:")
 			print("d = (", anIn, " - ", a1In, ") / (", nIn, " - 1)", sep='')
-			print("d =", str(expr))
+			print("d =", str(expr[0]))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):

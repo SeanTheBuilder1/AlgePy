@@ -1,4 +1,4 @@
-from sympy import symbols, solveset
+from sympy import symbols, solveset, solve
 Sn, An, A1, n, d= symbols("Sn An A1 n d")
 def calcSumAn():
 	while True:
@@ -10,21 +10,21 @@ def calcSumAn():
 			expr = expr.subs(A1, a1In)
 			expr = expr.subs(n, nIn)
 			expr = expr.subs(Sn, snIn)
-			expr = solveset(expr, An)
+			expr = solve(expr, An)
 			print("\nResults:")
 			print("An = (", snIn, " / ", nIn, ") * 2 - ", a1In, sep='')
-			print("An =", str(expr))
+			print("An =", str(expr[0]))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):
 				return
-		except:
+		except ZeroDivisionError:
 			print("Invalid Character")
 			
 def calcSumSn():
 	while True:
 		try:
-			formula = int(input("Press 1 if An is found\nPress 2 if d is found"))
+			formula = int(input("Press 1 if An is found\nPress 2 if d is found\n"))
 			if formula == 1:
 				anIn = input("An = ")
 				a1In = input("A1 = ")
@@ -33,10 +33,10 @@ def calcSumSn():
 				expr = expr.subs(An, anIn)
 				expr = expr.subs(A1, a1In)
 				expr = expr.subs(n, nIn)
-				expr = solveset(expr, Sn)
+				expr = solve(expr, Sn)
 				print("\nResults:")
 				print("Sn = (", nIn, " / 2) * (", a1In, " + ", anIn, ")", sep='')
-				print("Sn =", str(expr))
+				print("Sn =", str(expr[0]))
 				closer = str(input("\nEnter 1 to exit.\n"
 				"Press any key to continue.\n"))
 				if(closer == '1'):
@@ -49,10 +49,10 @@ def calcSumSn():
 				expr = expr.subs(A1, a1In)
 				expr = expr.subs(n, nIn)
 				expr = expr.subs(d, dIn)
-				expr = solveset(expr, Sn)
+				expr = solve(expr, Sn)
 				print("\nResults:")
 				print("Sn = (", nIn, " / 2) * (2 * ", a1In, " + (", nIn, " -  1) * ", dIn, sep='')
-				print("Sn =", str(expr))
+				print("Sn =", str(expr[0]))
 				closer = str(input("\nEnter 1 to exit.\n"
 				"Press any key to continue.\n"))
 				if(closer == '1'):
@@ -66,7 +66,7 @@ def calcSumSn():
 def calcSumA1():
 	while True:
 		try:
-			formula = int(input("Press 1 if An is found\nPress 2 if d is found"))
+			formula = int(input("Press 1 if An is found\nPress 2 if d is found\n"))
 			if formula == 1:
 				snIn = input("Sn = ")
 				anIn = input("An = ")
@@ -75,10 +75,10 @@ def calcSumA1():
 				expr = expr.subs(Sn, snIn)
 				expr = expr.subs(An, anIn)
 				expr = expr.subs(n, nIn)
-				expr = solveset(expr, A1)
+				expr = solve(expr, A1)
 				print("\nResults:")
 				print("A1 = (", snIn, " / ", nIn, ") * 2 - ", anIn, sep='')
-				print("A1 =", str(expr))
+				print("A1 =", str(expr[0]))
 				closer = str(input("\nEnter 1 to exit.\n"
 				"Press any key to continue.\n"))
 				if(closer == '1'):
@@ -91,10 +91,10 @@ def calcSumA1():
 				expr = expr.subs(Sn, snIn)
 				expr = expr.subs(n, nIn)
 				expr = expr.subs(d, dIn)
-				expr = solveset(expr, A1)
+				expr = solve(expr, A1)
 				print("\nResults:")
 				print("A1 = (", snIn, " / ", nIn, " - ", dIn, " * (", nIn, " - 1) / 2", sep='')
-				print("A1 =", str(expr))
+				print("A1 =", str(expr[0]))
 				closer = str(input("\nEnter 1 to exit.\n"
 				"Press any key to continue.\n"))
 				if(closer == '1'):
@@ -114,10 +114,10 @@ def calcSumd():
 			expr = expr.subs(A1, a1In)
 			expr = expr.subs(n, nIn)
 			expr = expr.subs(Sn, snIn)
-			expr = solveset(expr, d)
+			expr = solve(expr, d)
 			print("\nResults:")
 			print("d = (-2 * (", a1In, " - ", snIn, " / ", nIn, ") / (", nIn, " - 1))", sep='')
-			print("d =", str(expr))
+			print("d =", str(expr[0]))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):
@@ -136,10 +136,10 @@ def calcSumn():
 			expr = expr.subs(Sn, snIn)
 			expr = expr.subs(An, anIn)
 			expr = expr.subs(A1, a1In)
-			expr = solveset(expr, n)
+			expr = solve(expr, n)
 			print("\nResults:")
 			print("n = (2 *", snIn, " / (", a1In, " + ", anIn, ")", sep='')
-			print("n = ", str(expr))
+			print("n = ", str(expr[0]))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):

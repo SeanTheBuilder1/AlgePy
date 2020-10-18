@@ -1,4 +1,4 @@
-from sympy import solveset, symbols
+from sympy import solveset, symbols, solve
 An, A1, r, n= symbols("An A1 r n")
 # An = a * (r**(n-1))
 
@@ -18,14 +18,14 @@ def calcDefAn():
 				sol = sol.subs(A1, a1In)
 				sol = sol.subs(r, rIn)
 				sol = sol.subs(n, i)
-				sol = solveset(sol, An)
-				value.append(str(sol))
+				sol = solve(sol, An)
+				value.append(str(sol[0]))
 			print("\nResults:")
 			for i in range(len(value)):
 				print(i + 1, " | ", value[i])
-			expr = solveset(expr, An)
+			expr = solve(expr, An)
 			print("An = ", a1In, " * (", rIn, "^(", nIn, " - 1))", sep='')
-			print("An =", str(expr))
+			print("An =", str(expr[0]))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):
@@ -45,10 +45,10 @@ def calcDefA1():
 			expr = expr.subs(An, anIn)
 			expr = expr.subs(r, rIn)
 			expr = expr.subs(n, nIn)
-			expr = solveset(expr, A1)
+			expr = solve(expr, A1)
 			print("\nResults:")
 			print("A1 = (", anIn, " / ", rIn, "^(", nIn, " - 1))", sep='')
-			print("A1 =", str(expr))
+			print("A1 =", str(expr[0]))
 			closer = str(input("\nEnter 1 to exit.\n"
 			"Press any key to continue.\n"))
 			if(closer == '1'):
