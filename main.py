@@ -31,11 +31,15 @@ while True:
 			else:
 				raise(ValueError)
 		elif mode == 3:
-			value = int(input("Press 1 to get An and generate sequence\nPress 2 to get A1\n"))
+			value = int(input("Press 1 to get An and generate sequence\nPress 2 to get A1\nPress 3 to get n\nPress 4 to get r with 2 equations\n"))
 			if value == 1:
 				GS_def.calcDefAn()
 			elif value == 2:
 				GS_def.calcDefA1()
+			elif value == 3:
+				GS_def.calcDefn()
+			elif value == 4:
+				GS_def.calcDefr()
 			else:
 				raise(ValueError)
 		else:
