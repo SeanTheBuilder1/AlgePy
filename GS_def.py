@@ -127,4 +127,25 @@ def calcDefn():
 		except:
 			print("Invalid Character")
 			
+def calcDefr2():
+	while True:
+		try:
+			anIn = input("An = ")
+			a1In = input("A1 = ")
+			nIn = int(input("n = "))
+			expr = (An / A1)**(1 / (n - 1)) - r
+			expr = expr.subs(An, anIn)
+			expr = expr.subs(A1, a1In)
+			expr = expr.subs(n, nIn)
+			expr = solveset(expr, r)
+			print("\nResults:")
+			print("r = (", anIn, " / ", a1In, ")**(1 / (", nIn, " - 1))", sep='')
+			print("r =", str(expr))
+			closer = str(input("\nEnter 1 to exit.\n"
+			"Press any key to continue.\n"))
+			if(closer == '1'):
+				return
+		except:
+			print("Invalid Character")
+			
 			
