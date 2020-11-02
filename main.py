@@ -1,5 +1,8 @@
 from sympy import solveset, symbols
-import AS_def, AS_sum, GS_def, GS_sum
+import AS_def
+import AS_sum
+import GS_def
+import GS_sum
 while True:
 	try:
 		mode = int(input("Press 1 to use aritmetic sequence definition formula\nPress 2 to use sum of arithmetic sequence formula\nPress 3 to use geometric sequence definition formula\nPress 4 to use sum of geometric sequence formula\n"))
@@ -15,7 +18,7 @@ while True:
 				AS_def.calcDefd()
 			else:
 				raise(ValueError)
-				
+
 		elif mode == 2:
 			value = int(input("Press 1 to get Sn\nPress 2 to get An\nPress 3 to get A1\nPress 4 to get n\nPress 5 to get d\n"))
 			if value == 1:
@@ -54,6 +57,8 @@ while True:
 				GS_sum.calcSumr()
 			elif value == 4:
 				GS_sum.calcSumn()
+			else:
+				raise(ValueError)
 		else:
 			raise(ValueError)
 	except:
