@@ -68,7 +68,7 @@ def calcDefr():
 			n1In = int(input("n1 = "))
 			n2In = int(input("n2 = "))
 			nIn = n1In - n2In
-			expr = (An1/An2)**(1/n) - (r**n)**(1/n)
+			expr = (An1/(An2))**(1/n) - (r**n)**(1/n)
 			expr = expr.subs(An1, an1In)
 			expr = expr.subs(An2, an2In)
 			expr = expr.subs(n, nIn)
