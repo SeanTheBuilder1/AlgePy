@@ -6,13 +6,24 @@ x, y = symbols('x y')
 def calcSub():
     while True:
         try:
+            xArr = []
             poly = input("Input polynomial\n")
-            xIn = input("What is x\n")
-            poly = parse_expr(poly)
-            poly = poly - y
-            poly = poly.subs(x, xIn)
+            polyArc = poly
+            while True:
+                xIn = input("What is x array press = if end\n")
+                if xIn == "=":
+                    break
+                else:
+                    xArr.append(xIn)
+                
             print("Results:\n")
-            print(solve(poly, y))
+            for xIn in xArr:
+                poly = parse_expr(polyArc)
+                poly = poly - y
+                poly = poly.subs(x, xIn)
+                print(xIn, '=', solve(poly, y))
+            
+            
             closer = str(input("\nEnter 1 to exit.\n"
             "Press any key to continue.\n"))
             if(closer == '1'):
